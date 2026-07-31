@@ -1,0 +1,24 @@
+# Reglas de Inteligencia Artificial (AI Rules)
+
+Este proyecto usa **CMake** y **Catch2** (v2) para construir y probar el código de C++. 
+Como Asistente de IA (Antigravity, Cursor, Copilot, etc.), por favor sigue estas reglas al interactuar con este proyecto:
+
+## Compilar y Ejecutar Pruebas
+1. Los tests no se compilan con `g++` directamente. Siempre usa **CMake**.
+2. El código fuente principal de la aplicación está separado del código de las pruebas en la estructura del `CMakeLists.txt`.
+3. Para ejecutar los tests de la carpeta `ejemplo/`, debes ejecutar los siguientes comandos en secuencia:
+   ```bash
+   cd ejemplo
+   cmake .
+   cmake --build .
+   ctest
+   ```
+
+## Estilo de Código y Modificaciones
+- Si modificas una función en `ejemplo/src/matematicas.cpp`, asegúrate de actualizar o agregar un test correspondiente en `ejemplo/tests/test_matematicas.cpp`.
+- Al agregar nuevos tests, utiliza la macro `TEST_CASE` de Catch2 y `REQUIRE` para las aserciones.
+- No alteres el archivo `catch.hpp` ni `test_main.cpp`.
+
+## Catch2 (Framework)
+- Recuerda que estamos usando **Catch2 versión 2** (un solo archivo de cabecera `catch.hpp`).
+- El `test_main.cpp` solo contiene `#define CATCH_CONFIG_MAIN` y no debe contener lógica de pruebas.
