@@ -25,7 +25,14 @@ Nunca mezcles el código de producción con el código de pruebas. Asegúrate de
 
 ## 2. Configuración de Catch2
 
-1. **Obtener el Framework:** Si `tests/catch.hpp` no existe, descárgalo (Catch2 v2 single-header).
+1. **Obtener el Framework:** Si `tests/catch.hpp` no existe, la IA DEBE descargarlo automáticamente (Catch2 v2 single-header) desde su repositorio oficial usando uno de los siguientes comandos dependiendo del sistema operativo:
+   ```bash
+   # En Windows (PowerShell)
+   Invoke-WebRequest -Uri "https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp" -OutFile "tests/catch.hpp"
+   
+   # En Linux / Mac (Bash)
+   curl -L "https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp" -o tests/catch.hpp
+   ```
 2. **El Entry Point (test_main.cpp):** DEBE existir un archivo dedicado exclusivamente a generar el `main` de las pruebas. Este archivo solo debe contener:
    ```cpp
    #define CATCH_CONFIG_MAIN
